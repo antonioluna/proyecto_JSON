@@ -8,6 +8,13 @@ import json
 #4. Cantidad de instituciones privadas / públicas por distrito solicitado
 #5. Información sobre una institución en concreto
 
+
+def recorrer(dato1, dato2):
+    datos = {}
+    for x in educacionr:
+        datos[x[dato1]] = x[dato2]
+
+
 ##########################################################
 #                                                        #
 #                Abriendo fichero json                   #
@@ -17,3 +24,32 @@ import json
 
 with open("./DATA/educacion.json", "r") as educacion:
     educacionr = json.load(educacion)
+
+
+##########################################################
+#                                                        #
+#                 Valores fichero json                   #
+#                                                        #
+##########################################################
+
+
+cod_dept = "codigo_departamento"
+cod_dist = "codigo_distrito": "1301",
+cod_est = "codigo_establecimiento"
+cod inst = "codigo_institucion"
+cod_zona = "codigo_zona"
+nom_barrio = "nombre_barrio_localidad"
+nom_dept = "nombre_departamento"
+nom_dist = "nombre_distrito"
+nom_inst = "nombre_institucion"
+nom_zona = "nombre_zona"
+gestion = "sector_o_tipo_gestion"
+
+
+##########################################################
+#                                                        #
+#            Impresión de lista de distritos             #
+#                                                        #
+##########################################################
+
+distritos = recorrer("codigo_distrito",)
