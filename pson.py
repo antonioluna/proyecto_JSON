@@ -13,6 +13,7 @@ def recorrer(dato1, dato2):
     datos = {}
     for x in educacionr:
         datos[x[dato1]] = x[dato2]
+    return datos
 
 
 ##########################################################
@@ -34,9 +35,9 @@ with open("./DATA/educacion.json", "r") as educacion:
 
 
 cod_dept = "codigo_departamento"
-cod_dist = "codigo_distrito": "1301",
+cod_dist = "codigo_distrito"
 cod_est = "codigo_establecimiento"
-cod inst = "codigo_institucion"
+cod_inst = "codigo_institucion"
 cod_zona = "codigo_zona"
 nom_barrio = "nombre_barrio_localidad"
 nom_dept = "nombre_departamento"
@@ -52,4 +53,4 @@ gestion = "sector_o_tipo_gestion"
 #                                                        #
 ##########################################################
 
-distritos = recorrer("codigo_distrito",)
+distritos = recorrer(cod_dist, nom_dist)
