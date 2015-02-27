@@ -10,9 +10,10 @@ import json
 
 
 def recorrer(dato1, dato2):
-    datos = {"1254": ["nom-dist", {"cod-inst": ["nom_inst", "cod_dept", "nom_dept", "gestion"]}]}
+    #datos = {"1254": ["nom-dist", {"cod-inst": ["nom_inst", "cod_dept", "nom_dept", "gestion"]}]}
+    datos = {}
     for x in educacionr:
-        datos[x[dato1]] = x[dato2]
+        datos[x[dato1]] = [x[dato2]]
     return datos
 
 
