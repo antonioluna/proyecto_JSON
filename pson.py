@@ -12,27 +12,25 @@ import json
 #Con esta función recorro el json y obtengo un diccionario con los datos
 #relevantes
 def recorrer(dato1, dato2, dato3, dato4, dato5, dato6, dato7, dato8):
-    lista_o = []
-    lista_t = []
     datos = {}
+
     #datos = {"cod_dist": {"nom-dist": {"cod_est": ["cod-inst", "nom_inst",
     #"cod_dept" , "nom_dept", "gestion"]}}}
     for x in educacionr:
+        lista_datos = []
+        dic_2 = {}
+        dic_3 = {}
         datos_t = {}
-        dic_t = {}
-        lista_t = [x[dato1]]
-        dic_t[x[dato3]] = [x[dato4], x[dato5], x[dato6], x[dato7], x[dato8]]
-        datos_t[x[dato2]] = dic_t
-        lista_t.append(datos_t)
-        lista_o.append(lista_t)
-    for y in lista_o:
-        for z in range(len(y)):
-            print y[0]
-            #key = y[2].keys()
-            datos[y[0]] = y[1]
-            #print datos[y[0]]
+        lista_datos = [x[dato4], x[dato5], x[dato6], x[dato7], x[dato8]]
+        dic_2[x[dato3]] = lista_datos
+        dic_3[x[dato2]] = dic_2
+        datos_t[x[dato1]] = dic_3
+        print datos_t
     #print datos
     return datos
+
+#print datos_t[x[dato2]][x[dato3]]
+#datos[x[dato1][x[dato2]][x[dato3]]] = [x[dato4], x[dato5], x[dato6], x[dato7], x[dato8]]]
 
 
 ##########################################################
