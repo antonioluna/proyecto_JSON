@@ -48,7 +48,6 @@ def tipo(codigo):
     for x in educacionr:
         datos[0] = x[nom_dist]
         if x[cod_dist] == codigo:
-            print "jaja"
             if x[gestion] == "OFICIAL":
                 publica[x[cod_est]] = x[nom_inst]
             if x[gestion] == "PRIVADA":
@@ -154,16 +153,21 @@ Salir"
 
     if opcion == "4":
         num = raw_input("\nIntroduzca el código del distrito: ")
-        print "Distrito: %s --- %s:\nInstituciones %s: %s\nInstituciones %s: %s\
-Instituciones %s: %s"
         ppc = tipo(num)
-        print ppc
 
+        print "Distrito: %s --- %s:" % (num, ppc[0])
 
+        print "\nInstituciones Oficiales: %d" % (len(ppc[1]))
+        for ofi in ppc[1]:
+            print ofi + " --- " + ppc[1][ofi]
 
-        #codigo de distrito, nombre de distrito, codigo establecimiento,
-        #nombre establecimiento, tipo de gestion
+        print "\nInstituciones Privadas: %d" % (len(ppc[2]))
+        for pri in ppc[2]:
+            print pri + " --- " + ppc[2][pri]
 
+        print "\nInstituciones Concertadas: %d" % (len(ppc[3]))
+        for con in ppc[3]:
+            print con + " --- " + ppc[3][con]
 
     if opcion == "6":
         break
