@@ -18,8 +18,11 @@ def recorrer(dato1, dato2):
 
 
 def instituciones(codigo):
+    datos = {}
     for x in educacionr:
-        None
+        if x[cod_dist] == codigo:
+            datos[x[cod_est]] = x[nom_inst]
+    return datos
 
 ##########################################################
 #                                                        #
@@ -61,32 +64,46 @@ distritos = recorrer(cod_dist, nom_dist)
 #                                                        #
 ##########################################################
 
+print "\nBienvenido a mi proyecto de JSON"
 
 while True:
 
     print "\n¿Que quieres hacer?\n\n1 Listar distritos\n2 Listar de \
 instituciones de un distrito\n3 Ver el departamento gestor de una \
 institución\n4 Ver la cantidad de instituciones privadas / públicas de un \
-distrito\n5 Ver información detallada sobre una institución en concreto"
+distrito\n5 Ver información detallada sobre una institución en concreto\n6 \
+Salir"
 
     opcion = raw_input("\nElija opción: ")
+
+    ##########################################################
+    #                                                        #
+    #            Impresión de lista de distritos             #
+    #                                                        #
+    ##########################################################
+
     if opcion == "1":
+        print "\nCód   ---       Nombre dst\n"
         for x in distritos:
             print x + "  ---  " + distritos[x]
 
+    ##########################################################
+    #                                                        #
+    #           Impresión de lista de instituciones          #
+    #                                                        #
+    ##########################################################
 
-##########################################################
-#                                                        #
-#            Impresión de lista de distritos             #
-#                                                        #
-##########################################################
+    if opcion == "2":
+        elec = raw_input("\nIntroduzca el código del distrito")
+        insti = instituciones(elec)
+        print "En el distrito %s se encuentran las siguientes instituciones:"\
+        % (elec)
+        print "\nCód      ---      Nombre dst\n"
+        for x in insti:
+            print x + "  ---  " + insti[x]
 
+    if opcion == "2":
+        elec = raw_input("\nIntroduzca el código de la institución")
 
-print "\nBienvenido a mi proyecto de JSON"
-
-print "\n\n Cód  ---       Nombre dst\n"
-
-#for x in distritos:
-    #print x + "  ---  " + distritos[x]
-
-#print distritos
+    if opcion == "6":
+        break
