@@ -157,15 +157,18 @@ Salir"
 
         print "Distrito: %s --- %s:" % (num, ppc[0])
 
-        print "\nInstituciones Oficiales: %d" % (len(ppc[1]))
+        print "\nInstituciones Oficiales: %d\n" % (len(ppc[1]))
+        print "  Cod   ---   Nombre Ins."
         for ofi in ppc[1]:
             print ofi + " --- " + ppc[1][ofi]
 
         print "\nInstituciones Privadas: %d" % (len(ppc[2]))
+        print "  Cod   ---   Nombre Ins."
         for pri in ppc[2]:
             print pri + " --- " + ppc[2][pri]
 
         print "\nInstituciones Concertadas: %d" % (len(ppc[3]))
+        print "  Cod   ---   Nombre Ins."
         for con in ppc[3]:
             print con + " --- " + ppc[3][con]
 
