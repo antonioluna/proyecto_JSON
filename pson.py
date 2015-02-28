@@ -8,14 +8,22 @@ import json
 #4. Cantidad de instituciones privadas / públicas por distrito solicitado
 #5. Información sobre una institución en concreto
 
-#{"cod-inst": ["nom_inst", "cod_dept", "nom_dept", "gestion"]}
+
 def recorrer(dato1, dato2, dato3, dato4, dato5, dato6, dato7):
-    dic_t = {}
-    #datos = {"cod_dist": ["nom-dist", {"cod-inst": ["nom_inst", "cod_dept", "nom_dept", "gestion"]}]}
+    lista_o = []
+    lista_t = []
+    #datos = {"cod_dist": {"nom-dist": {"cod-inst": ["nom_inst", "cod_dept"
+    #, "nom_dept", "gestion"]}}}
     datos = {}
     for x in educacionr:
-        datos[x[dato1]] = [x[dato2]]
-        dic_t[dato3] = [dato4, dato5, dato6, dato7]
+        dic_t = {}
+        lista_t = [x[dato1]]
+        dic_t[x[dato3]] = [x[dato2], x[dato4], x[dato5], x[dato6], x[dato7]]
+        lista_t.append(dic_t)
+        lista_o.append(lista_t)
+    for y in lista_o:
+        for z in range(len(y)):
+            datos[y[0]] = y[1]
     return datos
 
 
