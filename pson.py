@@ -17,6 +17,7 @@ def recorrer(dato1, dato2):
     return datos
 
 
+#Obtiene las instituciones por distrito
 def instituciones(codigo):
     datos = {}
     for x in educacionr:
@@ -25,6 +26,7 @@ def instituciones(codigo):
     return datos
 
 
+#Obtiene el gestor de una institucion en concreto
 def gestor(cod):
     datos = []
     gestor = []
@@ -36,6 +38,30 @@ def gestor(cod):
             datos.extend([gestor])
             datos.extend([institucion])
     return datos
+
+
+def tipo(codigo):
+    datos = [""]
+    publica = {}
+    privada = {}
+    concertada = {}
+    for x in educacionr:
+        datos[0] = x[nom_dist]
+        if x[cod_dist] == codigo:
+            print "jaja"
+            if x[gestion] == "OFICIAL":
+                publica[x[cod_est]] = x[nom_inst]
+            if x[gestion] == "PRIVADA":
+                privada[x[cod_est]] = x[nom_inst]
+            if x[gestion] == "PRIV.SUBVENCIONADA":
+                concertada[x[cod_est]] = x[nom_inst]
+    datos.extend([publica])
+    datos.extend([privada])
+    datos.extend([concertada])
+    return datos
+
+        #codigo de distrito, nombre de distrito, codigo establecimiento,
+        #nombre establecimiento, tipo de gestion
 
 ##########################################################
 #                                                        #
@@ -126,8 +152,18 @@ Salir"
     #                                                        #
     ##########################################################
 
-    if opcion == "3":
-        None
+    if opcion == "4":
+        num = raw_input("\nIntroduzca el código del distrito: ")
+        print "Distrito: %s --- %s:\nInstituciones %s: %s\nInstituciones %s: %s\
+Instituciones %s: %s"
+        ppc = tipo(num)
+        print ppc
+
+
+
+        #codigo de distrito, nombre de distrito, codigo establecimiento,
+        #nombre establecimiento, tipo de gestion
+
 
     if opcion == "6":
         break
