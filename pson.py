@@ -24,6 +24,19 @@ def instituciones(codigo):
             datos[x[cod_est]] = x[nom_inst]
     return datos
 
+
+def gestor(cod):
+    datos = []
+    gestor = []
+    institucion = []
+    for x in educacionr:
+        if x[cod_est] == cod:
+            gestor.extend([x[cod_dept], x[nom_dept]])
+            institucion.extend([x[cod_inst], x[nom_inst]])
+            datos.extend([gestor])
+            datos.extend([institucion])
+    return datos
+
 ##########################################################
 #                                                        #
 #                Abriendo fichero json                   #
@@ -55,9 +68,6 @@ nom_zona = "nombre_zona"
 gestion = "sector_o_tipo_gestion"
 
 
-distritos = recorrer(cod_dist, nom_dist)
-
-
 ##########################################################
 #                                                        #
 #                    Menú principal                      #
@@ -83,6 +93,7 @@ Salir"
     ##########################################################
 
     if opcion == "1":
+        distritos = recorrer(cod_dist, nom_dist)
         print "\nCód   ---       Nombre dst\n"
         for x in distritos:
             print x + "  ---  " + distritos[x]
@@ -102,8 +113,21 @@ Salir"
         for x in insti:
             print x + "  ---  " + insti[x]
 
-    if opcion == "2":
-        elec = raw_input("\nIntroduzca el código de la institución")
+    if opcion == "3":
+        cod = raw_input("\nIntroduzca el código de la institución: ")
+        gest = gestor(cod)
+        print "\nDepartamento: %sc - %s\nGestor: %s - %s"\
+        % (str(gest[1][0]), str(gest[1][1]),
+        str(gest[0][0]), str(gest[0][1]))
+
+    ##########################################################
+    #                                                        #
+    #                Cantidad pública/privada                #
+    #                                                        #
+    ##########################################################
+
+    if opcion == "3":
+        None
 
     if opcion == "6":
         break
