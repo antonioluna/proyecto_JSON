@@ -12,8 +12,7 @@ import json
 #Con esta función recorro el json y obtengo un diccionario con los datos
 #relevantes
 def recorrer(dato1, dato2, dato3, dato4, dato5, dato6, dato7, dato8):
-    datos = {}
-
+    datos = []
     #datos = {"cod_dist": {"nom-dist": {"cod_est": ["cod-inst", "nom_inst",
     #"cod_dept" , "nom_dept", "gestion"]}}}
     for x in educacionr:
@@ -23,14 +22,12 @@ def recorrer(dato1, dato2, dato3, dato4, dato5, dato6, dato7, dato8):
         datos_t = {}
         lista_datos = [x[dato4], x[dato5], x[dato6], x[dato7], x[dato8]]
         dic_2[x[dato3]] = lista_datos
+        #el demonio esta aquí
         dic_3[x[dato2]] = dic_2
         datos_t[x[dato1]] = dic_3
-        print datos_t
-    #print datos
+        datos_t[x[dato1]][x[dato2]][x[dato3]] = lista_datos
+        datos.append(datos_t)
     return datos
-
-#print datos_t[x[dato2]][x[dato3]]
-#datos[x[dato1][x[dato2]][x[dato3]]] = [x[dato4], x[dato5], x[dato6], x[dato7], x[dato8]]]
 
 
 ##########################################################
@@ -66,6 +63,13 @@ gestion = "sector_o_tipo_gestion"
 
 distritos = recorrer(cod_dist, nom_dist, cod_est, cod_inst, nom_inst, cod_dept,
     nom_dept, gestion)
+
+##########################################################
+#                                                        #
+#                    Menú principal                      #
+#                                                        #
+##########################################################
+
 
 
 ##########################################################
