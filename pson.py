@@ -2,12 +2,6 @@
 
 import json
 
-#1. Lista de distritos
-#2. Lista de instituciones por distritos
-#3. Departamento gestor de la institución
-#4. Cantidad de instituciones privadas / públicas por distrito solicitado
-#5. Información sobre una institución en concreto
-
 
 #Obtiene los codigos de los distritos
 def recorrer(dato1, dato2):
@@ -40,6 +34,7 @@ def gestor(cod):
     return datos
 
 
+#Función que obtiene el tipo de gestión de las instituciones de un distrito
 def tipo(codigo):
     datos = [""]
     publica = {}
@@ -59,8 +54,6 @@ def tipo(codigo):
     datos.extend([concertada])
     return datos
 
-        #codigo de distrito, nombre de distrito, codigo establecimiento,
-        #nombre establecimiento, tipo de gestion
 
 ##########################################################
 #                                                        #
@@ -93,11 +86,11 @@ nom_zona = "nombre_zona"
 gestion = "sector_o_tipo_gestion"
 
 
-##########################################################
-#                                                        #
-#                    Menú principal                      #
-#                                                        #
-##########################################################
+    ##########################################################
+    #                                                        #
+    #                    Menú principal                      #
+    #                                                        #
+    ##########################################################
 
 print "\nBienvenido a mi proyecto de JSON"
 
@@ -130,7 +123,7 @@ Salir"
     ##########################################################
 
     if opcion == "2":
-        elec = raw_input("\nIntroduzca el código del distrito")
+        elec = raw_input("\nIntroduzca el código del distrito: ")
         insti = instituciones(elec)
         print "En el distrito %s se encuentran las siguientes instituciones:"\
         % (elec)
@@ -141,7 +134,7 @@ Salir"
     if opcion == "3":
         cod = raw_input("\nIntroduzca el código de la institución: ")
         gest = gestor(cod)
-        print "\nDepartamento: %sc - %s\nGestor: %s - %s"\
+        print "\nInstitución: %s - %s\nGestor: %s - %s"\
         % (str(gest[1][0]), str(gest[1][1]),
         str(gest[0][0]), str(gest[0][1]))
 
@@ -172,5 +165,39 @@ Salir"
         for con in ppc[3]:
             print con + " --- " + ppc[3][con]
 
+    ##########################################################
+    #                                                        #
+    #          Información detallada de institución          #
+    #                                                        #
+    ##########################################################
+
+    if opcion == "5":
+        num = raw_input("\nIntroduzca el código de la institución: ")
+        for institucion in educacionr:
+            if institucion[cod_est] == num:
+                print "\nCódigo de distrito: %s"\
+                % (str(institucion[cod_dist]))
+                print "Nombre de distrito: %s"\
+                % (str(institucion[nom_dist]))
+                print "Tipo de gestión: %s"\
+                % (str(institucion[gestion]))
+                print "Código de departamento gestor: %s"\
+                % (str(institucion[cod_dept]))
+                print "Nombre de departamento gestor: %s"\
+                % (str(institucion[nom_dept]))
+                print "Código de institucion gestora: %s"\
+                % (str(institucion[cod_inst]))
+                print "Nombre de institución: %s"\
+                % (str(institucion[nom_inst]))
+                print "Código de institución: %s"\
+                % (str(institucion[cod_est]))
+                print "Código de zona: %s"\
+                % (str(institucion[cod_zona]))
+                print "Zona: %s"\
+                % (str(institucion[nom_zona]))
+                print "Nombre del barrio: %s"\
+                % (str(institucion[nom_barrio]))
+
     if opcion == "6":
+        print "\n\nAdiós\n\n"
         break
